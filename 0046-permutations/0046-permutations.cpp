@@ -1,11 +1,9 @@
 class Solution {
 public:
+//********** Using swapping space complexity reduced
 void solve(int ind,vector<vector<int>> &ans,vector<int> &nums){
     if(ind == nums.size()){
-        vector<int> temp;
-        for(int i=0;i<nums.size();i++)
-        temp.push_back(nums[i]);
-        ans.push_back(temp);
+        ans.push_back(nums);
         return;
     }
     for(int i=ind;i<nums.size();i++){
