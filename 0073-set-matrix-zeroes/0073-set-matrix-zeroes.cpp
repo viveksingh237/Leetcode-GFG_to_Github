@@ -20,9 +20,30 @@ public:
         // }
 
 
-        // 
-        
-        //**** without using extra space
+        // //*** Solution using hashing
+        // int n=matrix.size(),m=matrix[0].size();
+        // vector<int> row(n,0),col(m,0);
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m;j++){
+        //         if(matrix[i][j] == 0){
+        //         row[i]= -1;
+        //         //cout<<i<<" ";
+        //         col[j]= -1;
+        //        // cout<<j<<endl;
+        //         }
+        //     }
+        // }
+
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m;j++){
+        //         if(row[i]== -1 || col[j] == -1){
+        //         matrix[i][j] == 0;
+        //         }
+        //     }
+        // }
+
+
+         //**** without using extra space Optimal
 
         int col0=1;
         for(int i=0;i<matrix.size();i++){
@@ -54,6 +75,5 @@ public:
             for(int i=0;i<matrix.size();i++)
             matrix[i][0] = 0;
         }
-
     }
 };
