@@ -12,11 +12,11 @@ public:
             break;
             }
         }
-        // if(ind == -1){ // if last permutation
-        // reverse(nums.begin(),nums.end()); // next permutatuon will be very  
-        //  return;                                  //first one
-        // }
-        for(int i=n-1;i>=ind and ind != -1;i--){   
+        if(ind == -1){ // if last permutation
+        reverse(nums.begin(),nums.end()); // next permutatuon will be very  
+         return;                                  //first one
+        }
+        for(int i=n-1;i>ind;i--){   
         if(nums[ind] < nums[i]){        //finding the smaller element just 
         swap(nums[ind],nums[i]);       //after common prefix and swapping
         break;                  
