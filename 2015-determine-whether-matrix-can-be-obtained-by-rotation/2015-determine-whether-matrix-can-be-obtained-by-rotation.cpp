@@ -22,6 +22,8 @@ public:
         //     cout<<endl;
         // }
         // return mat == target;
+
+        //****** using extra space
 int x=0;
 int n = matrix.size();
 vector < vector < int >> rotated = matrix;
