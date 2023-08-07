@@ -112,31 +112,65 @@ struct Node{
 /*  Function which returns the  root of 
     the flattened linked list. */
     
+///******Without Using Extra Space ***********
+Node *merge(Node *a, Node *b){
+    Node *temp = new Node(0);
+    Node *res = temp;
+    while(a != NULL and b != NULL){
+        if(a->data <= b->data){
+            temp->bottom = a;
+            temp = temp->bottom;
+            a = a->bottom;
+        }
+        else{
+            temp->bottom = b;
+            temp = temp->bottom;
+            b = b->bottom;
+        }
+    }
+    
+    if(a) temp->bottom = a;
+    else temp->bottom = b;
+    
+    return res->bottom;
+}
 Node *flatten(Node *root)
 {
-   vector<int> v;
-   Node *temp1, *temp2;
-   temp1 = root;
-   while(temp1){
-       v.push_back(temp1->data);
-       temp2 = temp1->bottom;
-       while(temp2){
-           v.push_back(temp2->data);
-           temp2 = temp2->bottom;
-       }
-       temp1 = temp1->next;
-   }
-   sort(v.begin(),v.end());
-   //for(auto& x : v) cout<<x<<" ";
+   if(root == nullptr or root->next == nullptr)
+   return root;
    
-   Node *temp3 = new Node(0);
-   Node *temp4 = temp3;
-   for(auto& x : v){
-       Node *temp5 = new Node(x);
-       temp3->bottom = temp5;
-       temp3 = temp3->bottom;
-   }
-   temp3->bottom = NULL;
-   return temp4->bottom;
+   root->next = flatten(root->next);
+   root = merge(root, root->next);
+   
+   return root;
 }
+
+//*********** Using extra Space***********
+// Node *flatten(Node *root)
+// {
+//   vector<int> v;
+//   Node *temp1, *temp2;
+//   temp1 = root;
+//   while(temp1){
+//       v.push_back(temp1->data);
+//       temp2 = temp1->bottom;
+//       while(temp2){
+//           v.push_back(temp2->data);
+//           temp2 = temp2->bottom;
+//       }
+//       temp1 = temp1->next;
+//   }
+//   sort(v.begin(),v.end());
+//   //for(auto& x : v) cout<<x<<" ";
+   
+//   Node *temp3 = new Node(0);
+//   Node *temp4 = temp3;
+//   for(auto& x : v){
+//       Node *temp5 = new Node(x);
+//       temp3->bottom = temp5;
+//       temp3 = temp3->bottom;
+//   }
+//   temp3->bottom = NULL;
+//   return temp4->bottom;
+// }
 
